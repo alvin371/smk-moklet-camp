@@ -3,6 +3,7 @@ import Button from '../../atoms/Button';
 import Icon from '../../atoms/Icon';
 import Menu from '../../molecules/Menu';
 import { ProfileDropdown } from '../../atoms/Dropdown';
+import { menuItems } from '../../../routes';
 
 const Navbar: React.FC = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -10,13 +11,6 @@ const Navbar: React.FC = () => {
 
     const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
     const toggleProfileMenu = () => setIsProfileOpen(!isProfileOpen);
-
-    const menuItems = [
-        { label: 'Dashboard', href: '#', isActive: true },
-        { label: 'Team', href: '#' },
-        { label: 'Projects', href: '#' },
-        { label: 'Calendar', href: '#' },
-    ];
 
     return (
         <nav className="bg-gray-800">
