@@ -17,74 +17,28 @@ interface User {
     };
 }
 
-const dummyData: User[] = [
-    {
-        id: 1,
-        name: 'John Doe',
-        username: 'johndoe',
-        email: 'johndoe@example.com',
-        address: {
-            street: '123 Elm St',
-            suite: 'Apt 4',
-            city: 'Gotham',
-            zipcode: '12345',
-        },
-    },
-    {
-        id: 2,
-        name: 'Jane Smith',
-        username: 'janesmith',
-        email: 'janesmith@example.com',
-        address: {
-            street: '456 Oak St',
-            suite: 'Suite 10',
-            city: 'Metropolis',
-            zipcode: '67890',
-        },
-    },
-    {
-        id: 3,
-        name: 'Alice Johnson',
-        username: 'alicejohnson',
-        email: 'alicejohnson@example.com',
-        address: {
-            street: '789 Pine St',
-            suite: 'Apt 2',
-            city: 'Star City',
-            zipcode: '11223',
-        },
-    },
-    {
-        id: 4,
-        name: 'Bob Brown',
-        username: 'bobbrown',
-        email: 'bobbrown@example.com',
-        address: {
-            street: '101 Maple St',
-            suite: 'Suite 5',
-            city: 'Central City',
-            zipcode: '33445',
-        },
-    },
-    {
-        id: 5,
-        name: 'Charlie Davis',
-        username: 'charliedavis',
-        email: 'charliedavis@example.com',
-        address: {
-            street: '202 Cedar St',
-            suite: 'Apt 3',
-            city: 'Coast City',
-            zipcode: '55667',
-        },
-    },
-];
+
 
 const UserPages: React.FC = () => {
-    const [users, setUsers] = useState<User[]>(dummyData);
+    const [users, setUsers] = useState<User[]>();
     const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
+        const userFetch = async () => {
+            try {
+                const response = await fetch('https://jsonplaceholder.typicode.com/users');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data');
+                }
+                const data = await response.json();
+                console.log(data, 'data');
+                setUsers(data);
+            }
+            catch (error) {
+                console.error(error);
+            }
+        }
+        userFetch();
         setLoading(false); // No need for real fetching, so set loading to false immediately
     }, []);
 
@@ -145,7 +99,7 @@ const UserPages: React.FC = () => {
                 />
             </div>
             <div className="my-20 flex justify-center">
-                <Table columns={columns} dataSource={users.map(user => ({ ...user, key: user.id.toString() }))} />
+                <Table columns={columns} dataSource={users?.map(user => ({ ...user, key: user.id.toString() }))} />
             </div>
         </Layout>
     );
