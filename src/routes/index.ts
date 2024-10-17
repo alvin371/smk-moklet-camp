@@ -5,6 +5,8 @@ import { RouteObject } from "react-router-dom";
 const HomePages = lazy(() => import("../pages/Home"));
 const UsersPages = lazy(() => import("../pages/Users"));
 const AboutPages = lazy(() => import("../pages/About"));
+const LoginPages = lazy(() => import("../pages/Auth/Login"));
+const RegisterPages = lazy(() => import("../pages/Auth/Register"));
 
 // Define your routes
 const routes: RouteObject[] = [
@@ -19,6 +21,14 @@ const routes: RouteObject[] = [
   {
     path: "/about",
     Component: AboutPages,
+  },
+  {
+    path: "/auth/login",
+    Component: LoginPages,
+  },
+  {
+    path: "/auth/register",
+    Component: RegisterPages,
   },
 ];
 

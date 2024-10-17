@@ -11,11 +11,15 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.4.0",
+    "@tanstack/react-query": "^5.59.15",
+    "@types/crypto-js": "^4.2.2",
     "antd": "^5.20.3",
     "axios": "^1.7.5",
+    "crypto-js": "^4.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.1",
+    "remeda": "^2.15.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

@@ -13,3 +13,10 @@ export interface MovieResponse {
   Response: string;
   Error?: string;
 }
+
+export const ENDPOINTS = {
+  Register: "/register",
+  Login: "/login",
+  User: "/user",
+  Menu: "/menu",
+};
